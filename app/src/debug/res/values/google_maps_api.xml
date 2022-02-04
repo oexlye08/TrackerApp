@@ -1,0 +1,24 @@
+<resources>
+    <!--
+    TODO: Before you run your application, you need a Google Maps API key.
+
+    To get one, follow this link, follow the directions and press "Create" at the end:
+
+    https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=B7:BE:25:C0:64:76:99:6A:9C:44:E5:62:9B:0E:62:62:C6:7E:DD:BD%3Bid.my.okisulton.trackerapp
+
+    You can also add your credentials to an existing key, using these values:
+
+    Package name:
+    id.my.okisulton.trackerapp
+
+    SHA-1 certificate fingerprint:
+    B7:BE:25:C0:64:76:99:6A:9C:44:E5:62:9B:0E:62:62:C6:7E:DD:BD
+
+    Alternatively, follow the directions here:
+    https://developers.google.com/maps/documentation/android/start#get-key
+
+    Once you have your key (it starts with "AIza"), replace the "google_maps_key"
+    string in this file.
+    -->
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyAQujl7vajUQzLtjZ8f0Q5CXFiRq0KnbtI</string>
+</resources>
