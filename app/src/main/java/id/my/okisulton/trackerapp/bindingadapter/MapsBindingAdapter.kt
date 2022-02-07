@@ -12,10 +12,10 @@ class MapsBindingAdapter {
     companion object {
         @BindingAdapter("observeTracking")
         @JvmStatic
-        fun observeTracking(view : View, started: Boolean ) {
+        fun observeTracking(view: View, started: Boolean) {
             if (started && view is Button) {
                 view.visibility = View.VISIBLE
-            } else if (started && view is TextView){
+            } else if (started && view is TextView) {
                 view.visibility = View.INVISIBLE
             }
         }

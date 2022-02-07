@@ -14,7 +14,7 @@ import id.my.okisulton.trackerapp.util.Permissions.hasLocationPermission
 import id.my.okisulton.trackerapp.util.Permissions.requestLocationPermission
 
 class PermissionFragment : Fragment(), EasyPermissions.PermissionCallbacks {
-    private var _binding : FragmentPermissionBinding? = null
+    private var _binding: FragmentPermissionBinding? = null
     private val binding get() = _binding!!
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,18 +30,18 @@ class PermissionFragment : Fragment(), EasyPermissions.PermissionCallbacks {
 
     private fun setupListener() {
         binding.continueButton.setOnClickListener {
-            if (hasLocationPermission(requireContext())){
+            if (hasLocationPermission(requireContext())) {
                 findNavController().navigate(R.id.action_permissionFragment_to_mapsFragment)
-            }else{
+            } else {
                 requestLocationPermission(this)
             }
         }
     }
 
     override fun onPermissionsDenied(requestCode: Int, perms: List<String>) {
-        if (EasyPermissions.somePermissionPermanentlyDenied(this, perms)){
+        if (EasyPermissions.somePermissionPermanentlyDenied(this, perms)) {
             SettingsDialog.Builder(requireActivity()).build().show()
-        }else{
+        } else {
             requestLocationPermission(this)
         }
     }

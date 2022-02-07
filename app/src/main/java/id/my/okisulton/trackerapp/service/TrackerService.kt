@@ -12,12 +12,10 @@ import android.os.Looper
 import androidx.core.app.NotificationCompat
 import androidx.lifecycle.LifecycleService
 import androidx.lifecycle.MutableLiveData
-import com.google.android.gms.common.util.MapUtils
 import com.google.android.gms.location.*
 import com.google.android.gms.maps.model.LatLng
 import dagger.hilt.android.AndroidEntryPoint
 import id.my.okisulton.trackerapp.misc.MasterFunction
-import id.my.okisulton.trackerapp.ui.maps.MapUtil
 import id.my.okisulton.trackerapp.ui.maps.MapUtil.calculateTheDistance
 import id.my.okisulton.trackerapp.util.Constants.ACTION_SERVICE_START
 import id.my.okisulton.trackerapp.util.Constants.ACTION_SERVICE_STOP
@@ -61,11 +59,11 @@ class TrackerService : LifecycleService() {
         locationList.postValue(mutableListOf())
     }
 
-    private val locationCallback = object : LocationCallback(){
+    private val locationCallback = object : LocationCallback() {
         override fun onLocationResult(result: LocationResult) {
             super.onLocationResult(result)
-            result.locations.let {  locations->
-                for (location in locations){
+            result.locations.let { locations ->
+                for (location in locations) {
 //                    val newLatLng = LatLng(location.latitude, location.longitude)
 //                    masterFunction.showLog("Trakcer services", "$newLatLng")
                     updateLocationList(location)
@@ -76,7 +74,7 @@ class TrackerService : LifecycleService() {
         }
     }
 
-    private fun updateLocationList(location: Location){
+    private fun updateLocationList(location: Location) {
         val newLatLng = LatLng(location.latitude, location.longitude)
         locationList.value?.apply {
             add(newLatLng)
@@ -114,8 +112,8 @@ class TrackerService : LifecycleService() {
     }
 
     @SuppressLint("MissingPermission")
-    private fun startLocationUpdate(){
-        val locationRequest = LocationRequest().apply {
+    private fun startLocationUpdate() {
+        val locationRequest = LocationRequest.create().apply {
             interval = LOCATION_UPDATE_INTERVAL
             fastestInterval = LOCATION_FASTEST_UPDATE_INTERVAL
             priority = LocationRequest.PRIORITY_HIGH_ACCURACY

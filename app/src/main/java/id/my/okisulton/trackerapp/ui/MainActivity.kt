@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
 
         navController = findNavController(R.id.navHostFragment)
 
-        if (hasLocationPermission(this)){
+        if (hasLocationPermission(this)) {
             navController.navigate(R.id.action_permissionFragment_to_mapsFragment)
         }
     }

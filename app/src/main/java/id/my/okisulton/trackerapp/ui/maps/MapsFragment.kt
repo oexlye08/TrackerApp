@@ -41,7 +41,8 @@ import id.my.okisulton.trackerapp.util.Permissions.requestBackgroundLocationPerm
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class MapsFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMyLocationButtonClickListener, GoogleMap.OnMarkerClickListener,
+class MapsFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMyLocationButtonClickListener,
+    GoogleMap.OnMarkerClickListener,
     EasyPermissions.PermissionCallbacks {
     private var _binding: FragmentMapsBinding? = null
     private val binding get() = _binding!!
@@ -68,7 +69,8 @@ class MapsFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMyLocationButto
         binding.lifecycleOwner = this
         binding.tracking = this
 
-        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(requireActivity())
+        fusedLocationProviderClient =
+            LocationServices.getFusedLocationProviderClient(requireActivity())
 
         setupListener()
 
@@ -163,7 +165,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMyLocationButto
         }
     }
 
-    @SuppressLint("MissingPermission")
+    @SuppressLint("MissingPermission", "PotentialBehaviorOverride")
     override fun onMapReady(googleMap: GoogleMap) {
         map = googleMap
         map.isMyLocationEnabled = true
@@ -247,12 +249,12 @@ class MapsFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMyLocationButto
         addMarker(locationList.last())
     }
 
-    private fun addMarker(position: LatLng){
+    private fun addMarker(position: LatLng) {
         val marker = map.addMarker(MarkerOptions().position(position))
         marker?.let { markerList.add(it) }
     }
 
-    private fun displayResult(){
+    private fun displayResult() {
         val result = Result(
             calculateTheDistance(locationList),
             calculateElapsedTime(startTime, stopTime)
@@ -282,10 +284,10 @@ class MapsFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMyLocationButto
                     setCameraPosition(lastKnownLocation)
                 )
             )
-            for (polyline in polylineList){
+            for (polyline in polylineList) {
                 polyline.remove()
             }
-            for (marker in markerList){
+            for (marker in markerList) {
                 marker.remove()
             }
             locationList.clear()

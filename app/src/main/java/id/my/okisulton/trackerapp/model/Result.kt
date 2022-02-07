@@ -10,4 +10,4 @@ import kotlinx.parcelize.Parcelize
 data class Result(
     var distance: String,
     var time: String
-): Parcelable
+) : Parcelable
